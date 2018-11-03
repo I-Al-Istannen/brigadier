@@ -49,4 +49,17 @@ public class LiteralArgumentBuilderTest {
 
         assertThat(node.getChildren(), hasSize(2));
     }
+
+    @Test
+    public void testBuildWithDescription() throws Exception {
+        String shortDescription = "A short description!";
+        String longDescription = "A long description";
+
+        builder.shortDescription(shortDescription)
+                .longDescription(longDescription);
+        final LiteralCommandNode<Object> node = builder.build();
+
+        assertThat(node.getShortDescription(), is(shortDescription));
+        assertThat(node.getLongDescription(), is(longDescription));
+    }
 }

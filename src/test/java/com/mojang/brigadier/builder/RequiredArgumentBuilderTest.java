@@ -6,6 +6,7 @@ package com.mojang.brigadier.builder;
 import com.mojang.brigadier.Command;
 import com.mojang.brigadier.arguments.ArgumentType;
 import com.mojang.brigadier.tree.ArgumentCommandNode;
+import com.mojang.brigadier.tree.LiteralCommandNode;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -57,4 +58,18 @@ public class RequiredArgumentBuilderTest {
 
         assertThat(node.getChildren(), hasSize(2));
     }
+
+    @Test
+    public void testBuildWithDescription() throws Exception {
+        String shortDescription = "A short description!";
+        String longDescription = "A long description";
+
+        builder.shortDescription(shortDescription)
+                .longDescription(longDescription);
+        final ArgumentCommandNode<Object, Integer> node = builder.build();
+
+        assertThat(node.getShortDescription(), is(shortDescription));
+        assertThat(node.getLongDescription(), is(longDescription));
+    }
+
 }

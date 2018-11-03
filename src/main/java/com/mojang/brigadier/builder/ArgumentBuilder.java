@@ -20,6 +20,8 @@ public abstract class ArgumentBuilder<S, T extends ArgumentBuilder<S, T>> {
     private CommandNode<S> target;
     private RedirectModifier<S> modifier = null;
     private boolean forks;
+    private String shortDescription = "";
+    private String longDescription = "";
 
     protected abstract T getThis();
 
@@ -93,6 +95,26 @@ public abstract class ArgumentBuilder<S, T extends ArgumentBuilder<S, T>> {
 
     public boolean isFork() {
         return forks;
+    }
+
+    public String getShortDescription() {
+        return shortDescription;
+    }
+
+    public T shortDescription(String shortDescription) {
+        this.shortDescription = shortDescription;
+
+        return getThis();
+    }
+
+    public String getLongDescription() {
+        return longDescription;
+    }
+
+    public T longDescription(String longDescription) {
+        this.longDescription = longDescription;
+
+        return getThis();
     }
 
     public abstract CommandNode<S> build();
