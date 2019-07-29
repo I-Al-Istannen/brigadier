@@ -28,8 +28,8 @@ public class ArgumentCommandNode<S, T> extends CommandNode<S> {
     private final ArgumentType<T> type;
     private final SuggestionProvider<S> customSuggestions;
 
-    public ArgumentCommandNode(final String name, final ArgumentType<T> type, final Command<S> command, final Predicate<S> requirement, final CommandNode<S> redirect, final RedirectModifier<S> modifier, final boolean forks, final SuggestionProvider<S> customSuggestions, String longDescription, String shortDescription) {
-        super(command, requirement, redirect, modifier, forks, shortDescription, longDescription);
+    public ArgumentCommandNode(final String name, final ArgumentType<T> type, final Command<S> command, final Predicate<S> requirement, final CommandNode<S> redirect, final RedirectModifier<S> modifier, final boolean forks, final SuggestionProvider<S> customSuggestions, String longDescription, String shortDescription, String permission) {
+        super(command, requirement, redirect, modifier, forks, shortDescription, longDescription, permission);
         this.name = name;
         this.type = type;
         this.customSuggestions = customSuggestions;

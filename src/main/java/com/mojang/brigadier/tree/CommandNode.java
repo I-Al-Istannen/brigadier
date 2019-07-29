@@ -35,10 +35,11 @@ public abstract class CommandNode<S> implements Comparable<CommandNode<S>> {
     private Command<S> command;
     private String shortDescription;
     private String longDescription;
+    private String permission;
 
     protected CommandNode(final Command<S> command, final Predicate<S> requirement,
-        final CommandNode<S> redirect, final RedirectModifier<S> modifier, final boolean forks,
-        String shortDescription, String longDescription) {
+                          final CommandNode<S> redirect, final RedirectModifier<S> modifier, final boolean forks,
+                          String shortDescription, String longDescription, String permission) {
         this.command = command;
         this.requirement = requirement;
         this.redirect = redirect;
@@ -46,6 +47,7 @@ public abstract class CommandNode<S> implements Comparable<CommandNode<S>> {
         this.forks = forks;
         this.shortDescription = shortDescription;
         this.longDescription = longDescription;
+        this.permission = permission;
     }
 
     public Command<S> getCommand() {
@@ -74,6 +76,10 @@ public abstract class CommandNode<S> implements Comparable<CommandNode<S>> {
 
     public String getLongDescription() {
         return longDescription;
+    }
+
+    public String getPermission() {
+        return permission;
     }
 
     public boolean canUse(final S source) {

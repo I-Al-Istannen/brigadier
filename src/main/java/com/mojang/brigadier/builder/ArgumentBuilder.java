@@ -22,6 +22,7 @@ public abstract class ArgumentBuilder<S, T extends ArgumentBuilder<S, T>> {
     private boolean forks;
     private String shortDescription = "";
     private String longDescription = "";
+    private String permission = "";
 
     protected abstract T getThis();
 
@@ -113,6 +114,16 @@ public abstract class ArgumentBuilder<S, T extends ArgumentBuilder<S, T>> {
 
     public T longDescription(String longDescription) {
         this.longDescription = longDescription;
+
+        return getThis();
+    }
+
+    public String getPermission() {
+        return permission;
+    }
+
+    public T permission(String permission) {
+        this.permission = permission;
 
         return getThis();
     }
